@@ -1,1 +1,1 @@
-MyProject-main
+MyProject
