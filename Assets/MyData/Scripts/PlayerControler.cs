@@ -15,11 +15,27 @@ public class PlayerControler : MonoBehaviour
 
     public float jumpHeight = 3f;
 
-
-
+    public GameObject BulletPrefab;
+    public Transform spawnBulletPoint;
+    private bool _isFire;
+    public float damage;
+    public Transform _enemy;
+    public float bulletSpeed;
 
     bool isGrounded;
 
+    private void Fire()
+    {
+        GameObject bulletObject = Instantiate(BulletPrefab, spawnBulletPoint.position, transform.rotation);
+        BulletScript bullet = bulletObject.transform.gameObject.GetComponent<BulletScript>();
+        bullet.Initialization(damage, 3f, bulletSpeed, _enemy);
+
+    }
+
+    private void Awake()
+    {
+        damage = 4;
+    }
 
     private void Update()
     {
@@ -36,6 +52,12 @@ public class PlayerControler : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
+        if (Input.GetMouseButtonDown(0)) 
+        { 
+            _isFire = true; 
+        }
+            
+
     }
 
     void FixedUpdate()
@@ -46,7 +68,12 @@ public class PlayerControler : MonoBehaviour
         Vector3 move = transform.right * Hor + transform.forward * Ver;
         controller.Move(move * movespeed * Time.fixedDeltaTime);
 
-        
+        if (_isFire)
+        {
+            _isFire = false;
+            Fire();
+        }
+
 
 
     }

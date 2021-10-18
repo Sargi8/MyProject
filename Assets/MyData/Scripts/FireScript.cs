@@ -8,6 +8,7 @@ public class FireScript : MonoBehaviour
     public Transform spawnBulletPoint;
     private bool _isFire;
     public float damage;
+    public Transform _enemy;
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class FireScript : MonoBehaviour
     {
         GameObject bulletObject = Instantiate(BulletPrefab, spawnBulletPoint.position, transform.rotation);
         BulletScript bullet = bulletObject.transform.gameObject.GetComponent<BulletScript>();
-        bullet.Initialization(damage, 3f);
+        bullet.Initialization(damage, 30f, 100f, _enemy);
 
     }
 

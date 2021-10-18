@@ -519,7 +519,6 @@ GameObject:
   - component: {fileID: 4141826057970277758}
   - component: {fileID: 1212820300}
   - component: {fileID: 1212820297}
-  - component: {fileID: 1212820299}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -584,21 +583,10 @@ MonoBehaviour:
   gravity: -18
   groundDistance: 0.4
   jumpHeight: 3
---- !u!114 &1212820299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5318728573639295181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d79128aa11bbd5409afdb4c821779f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 5980862078945505377, guid: fdc21ddbb87f4004182f4fe17d604e0a, type: 3}
-  spawnBulletPoint: {fileID: 189468685}
+  BulletPrefab: {fileID: 0}
+  spawnBulletPoint: {fileID: 0}
   damage: 0
+  _enemy: {fileID: 0}
 --- !u!1 &5479778787283670072
 GameObject:
   m_ObjectHideFlags: 0
