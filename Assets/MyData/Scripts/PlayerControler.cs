@@ -8,6 +8,8 @@ public class PlayerControler : MonoBehaviour
     public Transform groundchek;
     public LayerMask groundMask;
 
+    private Animator _anim;
+
     public float movespeed;
     public float gravity = -9.8f;
     Vector3 velocity;
@@ -21,6 +23,7 @@ public class PlayerControler : MonoBehaviour
     public float damage;
     public Transform _enemy;
     public float bulletSpeed;
+    public Transform _direction;
 
     bool isGrounded;
 
@@ -35,6 +38,7 @@ public class PlayerControler : MonoBehaviour
     private void Awake()
     {
         damage = 4;
+        _anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -68,10 +72,21 @@ public class PlayerControler : MonoBehaviour
         Vector3 move = transform.right * Hor + transform.forward * Ver;
         controller.Move(move * movespeed * Time.fixedDeltaTime);
 
+        if (move != Vector3.zero)
+        {
+            _anim.SetBool("Move", true);
+        }
+        else
+        {
+            _anim.SetBool("Move", false);
+        }
+        
+
+
         if (_isFire)
         {
             _isFire = false;
-            Fire();
+            _anim.SetTrigger("Attack");
         }
 
 
